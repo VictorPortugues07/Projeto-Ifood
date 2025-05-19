@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function App() {
     const [tipoUsuario, setTipoUsuario] = useState(null); //
@@ -13,6 +14,8 @@ export default function App() {
     const [erroSenha, setErroSenha] = useState("");
     const [modo, setModo] = useState("");
     
+
+
     const handleEscolha = (tipo) => {
         setTipoUsuario(tipo);
     };
@@ -80,6 +83,25 @@ export default function App() {
         if (senha !== confirmarSenha) {
             alert("Senha não coincidem");
         }
+            const dados = {
+        nmUsuario: nome,
+        dsEmail: email,
+        dsSenha: senha,
+        flTipoUsuario: tipoUsuario === "cliente" ? 0 : 1,
+        nuCpfCnpj: cpf,
+        dtNascimento,
+        dsTelefone: telefone
+        };
+
+        axios.post('/usuarios', dados)
+        .then(sucesso => {
+            alert ("Cadastro Realizado com sucesso")
+            console.log(sucesso.data);
+        })
+        .catch(erro => {
+            alert ("Erro ao Cadastrar")
+            console.log(erro)
+        })
     };
 
     return (
@@ -95,7 +117,7 @@ export default function App() {
                     <h2>Cadastro - Cliente</h2>
                     <form onSubmit={handleSubmitChange}>
                         <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)}/>
-                        <input type="email" placeholder="Email" required />
+                        <input type="email" placeholder="Email" value={email} onChange={(e => setEmail(e.target.value))} />
                         <input type="text" placeholder="CPF" maxLength={14} value={cpf} onChange={handleCpfChange} />
 
                         <input type="date" placeholder="Data de Nascimento" maxLength={10} value={dtNascimento} onChange={handleDtNascimentoChange} />
