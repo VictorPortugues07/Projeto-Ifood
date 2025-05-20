@@ -1,40 +1,37 @@
 package com.delivery.delivery.security;
 
-import com.delivery.delivery.entity.UsuarioEntity;
+import com.delivery.delivery.entity.enums.TipoUsuario;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
-public class CustomUserDetails implements UserDetails {
+import java.util.Collections;
 
-    private final UsuarioEntity usuario;
+@AllArgsConstructor
+@Getter
+public class AppDetalhesUsuario implements UserDetails {
 
-    public CustomUserDetails(UsuarioEntity usuario) {
-        this.usuario = usuario;
-    }
+    private final Integer id;
+    private final String email;
+    private final String senha;
+    private final TipoUsuario tipoUsuario;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String role = switch (usuario.getFlTipoUsuario()) {
-            case CLIENTE -> "ROLE_CLIENTE";
-            case ENTREGADOR -> "ROLE_ENTREGADOR";
-            case FORNECEDOR -> "ROLE_FORNECEDOR";
-            default -> "ROLE_USER";
-        };
-
-        return List.of(new SimpleGrantedAuthority(role));
+        // Define o papel do usuário com base no tipo (ex: ROLE_CLIENTE)
+        return Collections.singleton(() -> "ROLE_" + tipoUsuario.name());
     }
 
     @Override
     public String getPassword() {
-        return usuario.getDsSenha();
+        return senha;
     }
 
     @Override
     public String getUsername() {
-        return usuario.getNmUsuario();
+        return email;
     }
 
     @Override
@@ -56,7 +53,5 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
-
 }
+
