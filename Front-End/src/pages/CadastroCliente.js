@@ -173,6 +173,9 @@
                             <input type="text" placeholder="CNPJ" value={cnpj} onChange={e => setCnpj(e.target.value)}/>
                             <input type="text" placeholder="Endereço" value={endereco} readOnly />
                             <MapContainer center = {[-28.4713, -49.0144]} zoom={13} onClick={handleMapClick}/>
+                            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"attribution="&copy;
+                             OpenStreetMap contributors"/>{posicao && (<Marker position={posicao}><Popup>
+                                {endereco || "Local selecionado"}</Popup></Marker>)}<MapContainer/>
                             Senhaconfirmar senha
                         </form>
                     </div>
