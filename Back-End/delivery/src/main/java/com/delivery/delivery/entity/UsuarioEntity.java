@@ -1,5 +1,6 @@
 package com.delivery.delivery.entity;
 
+import com.delivery.delivery.entity.enums.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,9 @@ public class UsuarioEntity implements Serializable {
     @Column(nullable = false)
     private String dsSenha;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Integer flTipoUsuario;
+    private TipoUsuario flTipoUsuario;
 
     @Column(nullable = false)
     private String nuCpfCnpj;
