@@ -4,9 +4,10 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Geral/Navbar';
-{/*import CadastroCliente from './pages/CadastroCliente';*/}
 import BarraDePesquisa from './components/Geral/BarraDePesquisa';
 import AppRoutes from './AppRoutes';
+//import cadastroCliente from './pages/cliente/cadastroCliente';
+
 
 const App = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const App = () => {
     <div className="app">
       <Navbar />
       <BarraDePesquisa/>
-      {/*<CadastroCliente /> Removi esse cara porque estava estourando erro nos testes*/}
+      
       <p style={{marginTop: "20px"}}></p>
       
 

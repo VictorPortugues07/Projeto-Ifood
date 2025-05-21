@@ -20,9 +20,13 @@ export default function FormularioCliente({ onCadastroConcluido }) {
     let tel = e.target.value.replace(/\D/g, "");
 
     if (tel.length <= 10) {
-      tel = tel.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
+      tel = tel
+        .replace(/(\d{2})(\d)/, "($1) $2")
+        .replace(/(\d{4})(\d)/, "$1-$2");
     } else {
-      tel = tel.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d)/, "$1-$2");
+      tel = tel
+        .replace(/(\d{2})(\d)/, "($1) $2")
+        .replace(/(\d{5})(\d)/, "$1-$2");
     }
 
     setTelefone(tel);
