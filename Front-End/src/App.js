@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import React from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Geral/Navbar";
 import CadastroCliente from "./pages/CadastroCliente";
 import "./App.css";
 

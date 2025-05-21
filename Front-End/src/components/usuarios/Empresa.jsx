@@ -10,6 +10,17 @@ const CadastroDeEmpresa = () => {
     confirmacaoSenha: "",
   });
 
+  const formatarCnpj = (valor) => {
+  let cnpj = valor.replace(/\D/g, ""); 
+  cnpj = cnpj
+    .replace(/^(\d{2})(\d)/, "$1.$2")
+    .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+    .replace(/\.(\d{3})(\d)/, ".$1/$2")
+    .replace(/(\d{4})(\d)/, "$1-$2");
+  return cnpj.slice(0, 18);
+};
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -52,15 +63,22 @@ const CadastroDeEmpresa = () => {
           className="w-full p-3 border rounded"
           required
         />
-        <input
+            <input
           type="text"
           name="cnpj"
           placeholder="CNPJ"
+          maxLength={18}
           value={form.cnpj}
-          onChange={handleChange}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              cnpj: formatarCnpj(e.target.value)
+            })
+          }
           className="w-full p-3 border rounded"
           required
         />
+
         <input
           type="text"
           name="endereco"
