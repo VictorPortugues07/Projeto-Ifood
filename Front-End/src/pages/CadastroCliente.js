@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Empresa from "../components/Empresa";
 import axios from "axios";
 import "leaflet/dist/leaflet.css";
+import FormularioCliente from "../components/FormularioCliente";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 export default function App() {
@@ -149,66 +150,7 @@ export default function App() {
         </div>
 
         {tipoUsuario === "empresa" && <Empresa />}
-        {tipoUsuario === "cliente" && (
-          <div className="FormularioCliente">
-            <h2>Cadastro - Cliente</h2>
-            <form onSubmit={handleSubmitChange}>
-              <input
-                type="text"
-                placeholder="Nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="CPF"
-                maxLength={14}
-                value={cpf}
-                onChange={handleCpfChange}
-              />
-              <input
-                type="date"
-                placeholder="Data de Nascimento"
-                maxLength={10}
-                value={dtNascimento}
-                onChange={handleDtNascimentoChange}
-              />
-              <input
-                type="text"
-                placeholder="Telefone"
-                maxLength={15}
-                value={telefone}
-                onChange={handleTelefoneChange}
-              />
-              <input
-                type={mostrarSenha ? "text" : "password"}
-                placeholder="Senha"
-                value={senha}
-                onChange={handleSenhaChange}
-              />
-              <span onClick={alterarVisibilidade}>
-                {mostrarSenha ? "🙈" : "👁️"}
-              </span>
-              <input
-                type="password"
-                placeholder="Confirmar Senha"
-                value={confirmarSenha}
-                onChange={handleConfirmarSenhaChange}
-              />
-              {erroSenha && <p style={{ color: "red" }}>{erroSenha}</p>}{" "}
-              {senha && confirmarSenha && senha !== confirmarSenha && (
-                <p style={{ color: "red" }}>As senhas não coincidem.</p>
-              )}
-              <button type="submit">Cadastrar</button>
-            </form>
-          </div>
-        )}
+        {tipoUsuario === "cliente" && <FormularioCliente />}
       </div>
     </div>
   );
