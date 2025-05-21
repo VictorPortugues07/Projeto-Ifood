@@ -19,8 +19,8 @@ public class EntregadorDto {
     private String nuCpf;
     private LocalDate dtNascimento;
     private String dsTelefone;
-    private String dsNumeroCnh;
-    private String dsPlacaVeiculo;
     private Double nuLatitude;
     private Double nuLongitude;
+    private String dsNumeroCnh;
+    private String dsPlacaVeiculo;
 }

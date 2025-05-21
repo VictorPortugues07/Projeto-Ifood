@@ -1,8 +1,6 @@
 package com.delivery.delivery.security;
 
 import com.delivery.delivery.entity.ClienteEntity;
-import com.delivery.delivery.entity.EntregadorEntity;
-import com.delivery.delivery.entity.FornecedorEntity;
 import com.delivery.delivery.repository.ClienteRepository;
 import com.delivery.delivery.repository.EntregadorRepository;
 import com.delivery.delivery.repository.FornecedorRepository;
@@ -23,7 +21,7 @@ public class AppDetalhesClienteService implements UserDetailsService {
 
         ClienteEntity cliente = clienteRepository.findByDsEmail(dsEmail).orElse(null);
         if (cliente != null) {
-            return new AppDetalhesCliente(
+            return new AppDetalhesUsuario(
                     cliente.getId(),
                     cliente.getDsEmail(),
                     cliente.getDsSenha(),
@@ -31,27 +29,7 @@ public class AppDetalhesClienteService implements UserDetailsService {
             );
         }
 
-        EntregadorEntity entregador = entregadorRepository.findByDsEmail(dsEmail).orElse(null);
-        if (entregador != null) {
-            return new AppDetalhesCliente(
-                    entregador.getId(),
-                    entregador.getDsEmail(),
-                    entregador.getDsSenha(),
-                    entregador.getFlTipoUsuario()
-            );
-        }
-
-        FornecedorEntity fornecedor = fornecedorRepository.findByDsEmail(dsEmail).orElse(null);
-        if (fornecedor != null) {
-            return new AppDetalhesCliente(
-                    fornecedor.getId(),
-                    fornecedor.getDsEmail(),
-                    fornecedor.getDsSenha(),
-                    fornecedor.getFlTipoUsuario()
-            );
-        }
-
-        throw new UsernameNotFoundException("Usuário com e-mail " + dsEmail + " não encontrado.");
+        throw new UsernameNotFoundException("Cliente com e-mail " + dsEmail + " não encontrado.");
     }
 }
 
