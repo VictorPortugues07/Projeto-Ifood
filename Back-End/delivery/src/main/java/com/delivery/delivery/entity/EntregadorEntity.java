@@ -12,9 +12,9 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="TBUSUARIO")
+@Table(name="TBENTREGADOR")
 @Entity
-public class UsuarioEntity implements Serializable {
+public class EntregadorEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class UsuarioEntity implements Serializable {
     private TipoUsuario flTipoUsuario;
 
     @Column(nullable = false)
-    private String nuCpfCnpj;
+    private String nuCpf;
 
     private LocalDate dtNascimento;
 
@@ -44,4 +44,9 @@ public class UsuarioEntity implements Serializable {
 
     private String dsPlacaVeiculo;
 
+    private Double nuLatitude;
+
+    private Double nuLongitude;
+
 }
+
