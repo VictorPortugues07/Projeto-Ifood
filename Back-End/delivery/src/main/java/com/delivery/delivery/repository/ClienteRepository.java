@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer>  {
     Optional<ClienteEntity> findByDsEmail(String dsEmail);
+    boolean existsByDsEmail(String dsEmail);
+    boolean existsByNuCpf(String nuCpf);
 }

@@ -7,4 +7,7 @@ import java.util.Optional;
 
 public interface FornecedorRepository extends JpaRepository<FornecedorEntity, Integer> {
     Optional<FornecedorEntity> findByDsEmail(String dsEmail);
+    boolean existsByNuCnpj(String nuCnpj);
+    boolean existsByDsEmail(String dsEmail);
+
 }
