@@ -2,17 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
+import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Geral/Navbar';
 {/*import CadastroCliente from './pages/CadastroCliente';*/}
 import BarraDePesquisa from './components/Geral/BarraDePesquisa';
+import AppRoutes from './AppRoutes';
 
 const App = () => {
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate('/Login');
+  };
   return (
     <div className="app">
       <Navbar />
       <BarraDePesquisa/>
-      {/*<CadastroCliente />*/}
+      {/*<CadastroCliente /> Removi esse cara porque estava estourando erro nos testes*/}
       <p style={{marginTop: "20px"}}></p>
       
 
@@ -23,7 +28,8 @@ const App = () => {
           <a href="#">Restaurante Japonês</a>
           <a href="#">Pizzaria</a>
         </nav>
-        <button className="login-button">Entrar ou Cadastrar</button>
+        <button className="login-button" onClick={handleLoginClick}>Entrar ou Cadastrar</button>
+         
       </header>
 
       <section className="hero">
@@ -83,5 +89,7 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+root.render(<AppRoutes />);
+
 
 reportWebVitals();
