@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AppDetalhesUsuarioService implements UserDetailsService {
+public class AppDetalhesClienteService implements UserDetailsService {
 
     private final ClienteRepository clienteRepository;
     private final EntregadorRepository entregadorRepository;
@@ -23,7 +23,7 @@ public class AppDetalhesUsuarioService implements UserDetailsService {
 
         ClienteEntity cliente = clienteRepository.findByDsEmail(dsEmail).orElse(null);
         if (cliente != null) {
-            return new AppDetalhesUsuario(
+            return new AppDetalhesCliente(
                     cliente.getId(),
                     cliente.getDsEmail(),
                     cliente.getDsSenha(),
@@ -33,7 +33,7 @@ public class AppDetalhesUsuarioService implements UserDetailsService {
 
         EntregadorEntity entregador = entregadorRepository.findByDsEmail(dsEmail).orElse(null);
         if (entregador != null) {
-            return new AppDetalhesUsuario(
+            return new AppDetalhesCliente(
                     entregador.getId(),
                     entregador.getDsEmail(),
                     entregador.getDsSenha(),
@@ -43,7 +43,7 @@ public class AppDetalhesUsuarioService implements UserDetailsService {
 
         FornecedorEntity fornecedor = fornecedorRepository.findByDsEmail(dsEmail).orElse(null);
         if (fornecedor != null) {
-            return new AppDetalhesUsuario(
+            return new AppDetalhesCliente(
                     fornecedor.getId(),
                     fornecedor.getDsEmail(),
                     fornecedor.getDsSenha(),

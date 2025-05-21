@@ -11,27 +11,26 @@ import java.util.Collections;
 
 @AllArgsConstructor
 @Getter
-public class AppDetalhesUsuario implements UserDetails {
+public class AppDetalhesCliente implements UserDetails {
 
     private final Integer id;
-    private final String email;
-    private final String senha;
-    private final TipoUsuario tipoUsuario;
+    private final String dsEmail;
+    private final String dsSenha;
+    private final TipoUsuario flTipoUsuario;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Define o papel do usuário com base no tipo (ex: ROLE_CLIENTE)
-        return Collections.singleton(() -> "ROLE_" + tipoUsuario.name());
+        return Collections.singleton(() -> "ROLE_" + flTipoUsuario.name());
     }
 
     @Override
     public String getPassword() {
-        return senha;
+        return dsSenha;
     }
 
     @Override
     public String getUsername() {
-        return email;
+        return dsEmail;
     }
 
     @Override
