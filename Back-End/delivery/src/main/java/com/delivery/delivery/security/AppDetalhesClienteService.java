@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AppDetalhesClienteService implements UserDetailsService {
-
+//aa
     private final ClienteRepository clienteRepository;
     private final EntregadorRepository entregadorRepository;
     private final FornecedorRepository fornecedorRepository;
