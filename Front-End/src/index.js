@@ -4,7 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import Navbar from './components/Geral/Navbar';
-import CadastroCliente from './pages/CadastroCliente';
+{/*import CadastroCliente from './pages/CadastroCliente';*/}
 import BarraDePesquisa from './components/Geral/BarraDePesquisa';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     <div className="app">
       <Navbar />
       <BarraDePesquisa/>
-      <CadastroCliente />
+      {/*<CadastroCliente />*/}
       <p style={{marginTop: "20px"}}></p>
       
 
