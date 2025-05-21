@@ -24,19 +24,21 @@ const LoginSlideComponent = () => {
         params: { email: formData.email, senha: formData.senha, role: selectedRole }
       });
       if (response.data.success) {
-        switch (selectedRole) {
+        /*switch (selectedRole) {
           case 'cliente':
-            navigate('/geral');
+          //navigate('/geral');
             break;
           case 'fornecedor':
-            navigate('/fornecedor');
+           // navigate('/fornecedor');
             break;
           case 'entregador':
-            navigate('/entregas');
+           // navigate('/entregas');
             break;
           default:
             break;
-        }
+            
+        }*/
+
       } else {
         alert('Credenciais inválidas.');
       }
@@ -52,9 +54,9 @@ const LoginSlideComponent = () => {
   return (
     <div className="login-container">
       <div className="role-selector">
-        <button onClick={() => handleSelect('cliente')}>Sou Cliente</button>
+       {/*} <button onClick={() => handleSelect('cliente')}>Sou Cliente</button>
         <button onClick={() => handleSelect('fornecedor')}>Sou Empresa</button>
-        <button onClick={() => handleSelect('entregador')}>Sou Entregador</button>
+        <button onClick={() => handleSelect('entregador')}>Sou Entregador</button>*/}
       </div>
 
       <div className={`login-box ${showLogin ? 'slide-in' : ''}`}>
