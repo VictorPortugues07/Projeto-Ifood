@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface EntregadorRepository extends JpaRepository<EntregadorEntity, Integer> {
     Optional<EntregadorEntity> findByDsEmail(String dsEmail);
+    boolean existsByDsEmail(String dsEmail);
+    boolean existsByNuCpf(String nuCpf);
 }

@@ -11,7 +11,7 @@ import java.util.Collections;
 
 @AllArgsConstructor
 @Getter
-public class AppDetalhesCliente implements UserDetails {
+public class AppDetalhesUsuario implements UserDetails {
 
     private final Integer id;
     private final String dsEmail;
